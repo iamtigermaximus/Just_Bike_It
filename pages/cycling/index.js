@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import styled from 'styled-components'
 import colors from '/utils/colors'
+import Card from '/components/Card'
 import { connectToDatabase } from '../lib/mongodb'
 import { RESPONSE_LIMIT_DEFAULT } from 'next/dist/server/api-utils'
 
@@ -81,21 +82,14 @@ const Cycling = ({ properties }) => {
       <SearchInputContainer>
         <SearchInput placeholder='Search City Bike Station' />
       </SearchInputContainer>
-      {properties.map((property, _id) => (
-        <BikeStationsContainer _id={_id}>
-          <BikeStationCard>
-            <BikeStationCardHeading>
-              <BikeStationName>{property.Nimi}</BikeStationName>
-              <BikeStationId>Bike station {property.ID}</BikeStationId>
-              <BikeStationAddress>{property.Osoite}</BikeStationAddress>
-            </BikeStationCardHeading>
-            <BikeStationCardContent>
-              <BikeStationCapacity>
-                Bikes available at the station: {property.Kapasiteet}
-              </BikeStationCapacity>
-            </BikeStationCardContent>
-          </BikeStationCard>
-        </BikeStationsContainer>
+      {properties.map((property) => (
+        <Card
+          id={property._id}
+          name={property.Nimi}
+          stationId={property.ID}
+          address={property.Osoite}
+          capacity={property.Kapasiteet}
+        />
       ))}
     </Container>
   )
