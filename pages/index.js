@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import clientPromise from '../lib/mongodb'
+// import clientPromise from '../lib/mongodb'
 import Image from 'next/image'
 import styled from 'styled-components'
 import colors from '../utils/colors'
