@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 import colors from '/utils/colors'
+import Link from 'next/link'
+import Router from 'next/router'
 
 const BikeStationsContainer = styled.div`
   display: flex;
@@ -39,19 +41,23 @@ const BikeStationCapacity = styled.h3`
 
 const Card = ({ id, name, address, stationId, capacity }) => {
   return (
-    <BikeStationsContainer id={id}>
-      <BikeStationCard>
-        <BikeStationCardHeading>
-          <BikeStationName>{name}</BikeStationName>
-          <BikeStationId>Bike station {stationId}</BikeStationId>
-          <BikeStationAddress>{address}</BikeStationAddress>
-        </BikeStationCardHeading>
-        <BikeStationCardContent>
-          <BikeStationCapacity>
-            Bikes available at the station: {capacity}
-          </BikeStationCapacity>
-        </BikeStationCardContent>
-      </BikeStationCard>
+    <BikeStationsContainer>
+      <Link as={`/cycling/${name}`} href='/cycling/[name]'>
+        <BikeStationCard id={id}>
+          <BikeStationCardHeading>
+            <a>
+              <BikeStationName>{name}</BikeStationName>
+            </a>
+            <BikeStationId>Bike station {stationId}</BikeStationId>
+            <BikeStationAddress>{address}</BikeStationAddress>
+          </BikeStationCardHeading>
+          <BikeStationCardContent>
+            <BikeStationCapacity>
+              Bikes available at the station: {capacity}
+            </BikeStationCapacity>
+          </BikeStationCardContent>
+        </BikeStationCard>
+      </Link>
     </BikeStationsContainer>
   )
 }
