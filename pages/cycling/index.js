@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Head from 'next/head'
 import styled from 'styled-components'
 import colors from '/utils/colors'
+import { breakpoints as bp } from '/utils/layout'
 import Card from '/components/Card'
 import { connectToDatabase } from '../lib/mongodb'
 
@@ -40,6 +41,10 @@ const BikeStationsContainer = styled.div`
   align-items: center;
   padding: 10px 0;
   flex-direction: column;
+
+  @media (min-width: ${bp.md}) {
+    background: ${colors.yellow};
+  }
 `
 
 const Cycling = ({ properties }) => {
