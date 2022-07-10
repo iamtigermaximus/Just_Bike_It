@@ -1,30 +1,53 @@
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
+import Head from 'next/head'
+import colors from '/utils/colors'
+
+const Container = styled.div`
+  background: ${colors.gray};
+  height: 100vh;
+`
+
+const PageHeadingContainer = styled.div`
+  background: ${colors.darkGray};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 0;
+`
+const Heading = styled.h1`
+  text-shadow: 0.6px 0 0;
+`
 
 const SingleStationContainer = styled.div`
-  background: yellow;
   padding: 30px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
 `
 
 const BikeStation = () => {
   const router = useRouter()
-  const { name } = router.query
+  const { name, address, stationId, capacity } = router.query
 
   console.log('name1', router.query)
-  console.log('name', name)
-  return (
-    <SingleStationContainer>
-      <h1>Single Station Page</h1>
-      <h2>Hello {name}!</h2>
 
-      {/* <h2>Station Number: {stationId}</h2>
-       <h2>Address: {address}</h2>
-      <h2>Available Bikes: {capacity}</h2> */}
-    </SingleStationContainer>
+  return (
+    <Container>
+      <Head>
+        <title>Bike Station</title>
+      </Head>
+      <PageHeadingContainer>
+        <Heading>Bike Station</Heading>
+      </PageHeadingContainer>
+
+      <SingleStationContainer>
+        <h1>Single Station Page</h1>
+        <h1>{name}</h1>
+        <h3>Bike Station {stationId}</h3>
+        <h3>{address}</h3>
+        <h2>Capacity {capacity}</h2>
+      </SingleStationContainer>
+    </Container>
   )
 }
 export default BikeStation

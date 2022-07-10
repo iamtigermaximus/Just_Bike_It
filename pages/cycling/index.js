@@ -32,6 +32,14 @@ const SearchInput = styled.input`
 const Heading = styled.h1`
   text-shadow: 0.6px 0 0;
 `
+const BikeStationsContainer = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 10px 0;
+  flex-direction: column;
+`
+const BikeStationsLinkItem = styled.a``
 
 const Cycling = ({ properties }) => {
   console.log('properties', properties)
@@ -56,16 +64,17 @@ const Cycling = ({ properties }) => {
           onChange={() => searchStation()}
         />
       </SearchInputContainer>
-
-      {properties.map((property) => (
-        <Card
-          id={property._id}
-          name={property.Nimi}
-          stationId={property.ID}
-          address={property.Osoite}
-          capacity={property.Kapasiteet}
-        />
-      ))}
+      <BikeStationsContainer>
+        {properties.map((property) => (
+          <Card
+            id={property._id}
+            name={property.Nimi}
+            stationId={property.ID}
+            address={property.Osoite}
+            capacity={property.Kapasiteet}
+          />
+        ))}
+      </BikeStationsContainer>
     </Container>
   )
 }

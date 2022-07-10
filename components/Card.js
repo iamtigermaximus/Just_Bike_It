@@ -1,21 +1,15 @@
 import styled from 'styled-components'
 import colors from '/utils/colors'
 import Link from 'next/link'
-import Router from 'next/router'
 
-const BikeStationsContainer = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  padding: 10px 0;
-  flex-direction: row;
-`
+const BikeStationsLinkItem = styled.a``
 
 const BikeStationCard = styled.div`
   border: 1px solid ${colors.darkGray};
   padding: 20px;
-  width: 50%;
+  width: 600px;
   background: ${colors.darkGray};
+  margin-bottom: 20px;
 `
 
 const BikeStationCardHeading = styled.div`
@@ -41,24 +35,30 @@ const BikeStationCapacity = styled.h3`
 
 const Card = ({ id, name, address, stationId, capacity }) => {
   return (
-    <BikeStationsContainer>
-      <Link as={`/cycling/${name}`} href='/cycling/[name]'>
-        <BikeStationCard id={id}>
-          <BikeStationCardHeading>
-            <a>
+    <>
+      <Link
+        as={`/cycling/${name}`}
+        href={{
+          pathname: '/cycling/[name]',
+          query: { id, name, address, stationId, capacity },
+        }}
+      >
+        <BikeStationsLinkItem>
+          <BikeStationCard id={id}>
+            <BikeStationCardHeading>
               <BikeStationName>{name}</BikeStationName>
-            </a>
-            <BikeStationId>Bike station {stationId}</BikeStationId>
-            <BikeStationAddress>{address}</BikeStationAddress>
-          </BikeStationCardHeading>
-          <BikeStationCardContent>
-            <BikeStationCapacity>
-              Bikes available at the station: {capacity}
-            </BikeStationCapacity>
-          </BikeStationCardContent>
-        </BikeStationCard>
+              <BikeStationId>Bike station {stationId}</BikeStationId>
+              <BikeStationAddress>{address}</BikeStationAddress>
+            </BikeStationCardHeading>
+            <BikeStationCardContent>
+              <BikeStationCapacity>
+                Bikes available at the station: {capacity}
+              </BikeStationCapacity>
+            </BikeStationCardContent>
+          </BikeStationCard>
+        </BikeStationsLinkItem>
       </Link>
-    </BikeStationsContainer>
+    </>
   )
 }
 
