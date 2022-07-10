@@ -7,7 +7,6 @@ const BikeStationsLinkItem = styled.a``
 const BikeStationCard = styled.div`
   border: 1px solid ${colors.darkGray};
   padding: 20px;
-  width: 600px;
   background: ${colors.darkGray};
   margin-bottom: 20px;
 `

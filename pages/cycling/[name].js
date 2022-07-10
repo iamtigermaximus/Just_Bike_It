@@ -24,7 +24,10 @@ const SingleStationContainer = styled.div`
   display: flex;
   flex-direction: column;
 `
-
+const BackContainer = styled.div`
+  width: 70px;
+  background: yellow;
+`
 const BikeStation = () => {
   const router = useRouter()
   const { name, address, stationId, capacity } = router.query
@@ -39,7 +42,9 @@ const BikeStation = () => {
       <PageHeadingContainer>
         <Heading>Bike Station</Heading>
       </PageHeadingContainer>
-
+      <BackContainer onClick={() => router.back()}>
+        <h3>Back</h3>
+      </BackContainer>
       <SingleStationContainer>
         <h1>Single Station Page</h1>
         <h1>{name}</h1>

@@ -26,11 +26,13 @@ const SearchInputContainer = styled.div`
 `
 const SearchInput = styled.input`
   padding: 20px;
-  width: 40%;
+  margin: 0 20px;
+  width: 100%;
   border-radius: 5px;
 `
 const Heading = styled.h1`
   text-shadow: 0.6px 0 0;
+  font-size: 20px;
 `
 const BikeStationsContainer = styled.div`
   display: flex;
@@ -39,16 +41,10 @@ const BikeStationsContainer = styled.div`
   padding: 10px 0;
   flex-direction: column;
 `
-const BikeStationsLinkItem = styled.a``
 
 const Cycling = ({ properties }) => {
   console.log('properties', properties)
-  const [search, setSearch] = useState('')
-
-  const searchStation = (e) => {
-    e.preventDefault()
-    setSearch(e.target.value)
-  }
+  const [searchStation, setSearchStation] = useState('')
 
   return (
     <Container>
@@ -61,13 +57,13 @@ const Cycling = ({ properties }) => {
       <SearchInputContainer>
         <SearchInput
           placeholder='Search City Bike Station'
-          onChange={() => searchStation()}
+          onChange={(e) => setSearchStation(e.target.value)}
         />
       </SearchInputContainer>
       <BikeStationsContainer>
         {properties.map((property) => (
           <Card
-            id={property._id}
+            key={property._id}
             name={property.Nimi}
             stationId={property.ID}
             address={property.Osoite}

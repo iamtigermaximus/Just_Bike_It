@@ -15,7 +15,10 @@ const PageHeadingContainer = styled.div`
   padding: 30px 0;
 `
 
-const Heading = styled.h1``
+const Heading = styled.h1`
+  text-shadow: 0.6px 0 0;
+  font-size: 20px;
+`
 
 const BuyPass = () => {
   return (
